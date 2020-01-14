@@ -12,7 +12,8 @@ const promoRouter = require('./routes/promoRouter');
 const leaderRouter = require('./routes/leaderRouter');
 var passport = require('passport');
 var authenticate = require('./authenticate');
-
+var config=require('./config');
+const url=config.mongoUrl;
 var app = express();
 
 // view engine setup
@@ -163,7 +164,7 @@ const Promotions=require('./models/promotions');
 const Leaders=require('./models/leaders');
 
 
-const url = 'mongodb://localhost:27017/conFusion';
+// const url = 'mongodb://localhost:27017/EXP-GEN';
 const connect = mongoose.connect(url);
 
 connect.then((db) => {
