@@ -31,3 +31,12 @@ exports.jwtPassport=passport.use(new JwtStrategy(opts,(jwt_payload,done)=>{
     });
 }));
 exports.verifyUser=passport.authenticate('jwt',{session:false});
+exports.verifyAdmin = function(req, err) {
+    if (req.user.admin){
+      return next();
+    } else {
+      var err = new Error('Only administrators are authorized to perform this operation.');
+      err.status = 403;
+      return next(err);
+    }
+};
