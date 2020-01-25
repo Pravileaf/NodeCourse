@@ -33,7 +33,7 @@ uploadRouter.route('/')
     res.end('Get operation not supported on /imageUpload');
 
 })
-.post(authenticate.verifyUser,authenticate.verifyAdmin,(req,res,next),upload.single('imageFile'),(req,res)=>{
+.post(authenticate.verifyUser,authenticate.verifyAdmin,upload.single('imageFile'),(req,res)=>{
     res.statusCode=200;
     res.setHeader('Content-Type','application/json');
     res.json(req.file);
